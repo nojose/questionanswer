@@ -1,0 +1,23 @@
+<h1>Listing qstatuses</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @qstatuses.each do |qstatus| %>
+  <tr>
+    <td><%= qstatus.type %></td>
+    <td><%= link_to 'Show', qstatus %></td>
+    <td><%= link_to 'Edit', edit_qstatus_path(qstatus) %></td>
+    <td><%= link_to 'Destroy', qstatus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Qstatus', new_qstatus_path %>
