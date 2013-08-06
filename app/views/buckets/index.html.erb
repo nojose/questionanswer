@@ -1,5 +1,5 @@
 <div align="center" style="font-size:18px;">
-   <%= link_to 'Add Bucket', new_bucket_path %>
+   | <%= link_to 'Add Bucket', new_bucket_path %> |
 </div>
 <h2>Listing buckets</h2>
 
@@ -10,15 +10,15 @@
 </div>
 
 <% @buckets.each do |bucket| %>
-    <div style="background-color:#cecece;">
-      <div style="float:left">
-        <h5 style="margin:2px;">Bucket <%= bucket.id %></h5>
+    <div class="bg-bucket">
+      <div class="left">
+        <h5 class="hquestion">Bucket <%= bucket.id %></h5>
       </div>
-      <div style="float:right">
+      <div class="right">
         <%= link_to 'Edit', edit_bucket_path(bucket) %> | <%= link_to 'Destroy', bucket, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
-      <div style="clear:both"></div>
-          <h3 style="margin:2px;"><%= bucket.phrase %><h3>
+      <div class="clear"></div>
+          <h3 class="hquestion"><%= bucket.phrase %><h3>
     </div>
     <ul>
     <% bucket.question.each do |q| %>
@@ -26,3 +26,6 @@
     <% end %>
     </ul>
 <% end %>
+<div align="center">
+    <%= link_to "PUBLISH", '/buckets.xml', class: "btn btn-large btn-primary" %>
+</div>

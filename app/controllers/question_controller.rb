@@ -21,7 +21,7 @@ class QuestionController < ApplicationController
         end
     end
 
-    redirect_to :action => "index"
+    redirect_to :action => "viewunmatched"
 
   end
 
@@ -42,7 +42,7 @@ class QuestionController < ApplicationController
             end
           end
       end
-      redirect_to :action => "index"
+      redirect_to :action => "viewunmatched"
       #render :text => params[:question]
       #update_attributes(:name => “Rob”)
   end
@@ -59,7 +59,7 @@ class QuestionController < ApplicationController
   	 		end
   	 	end
   	 end
-     redirect_to :action => "index"
+     redirect_to :action => "viewunmatched"
   end
 
   def viewadd

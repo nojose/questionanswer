@@ -7,6 +7,9 @@ class BucketsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @buckets }
+      format.xml { 
+        render :xml => @buckets.to_xml(:include => {:question => {:only => 'qtext'}})
+      }
     end
   end
 
@@ -87,4 +90,16 @@ class BucketsController < ApplicationController
     @buckets = Bucket.where("phrase like ?", "%"+searchString+"""%")
     render "index"
   end
+
+  def testxml
+
+    @buckets = Bucket.all
+
+    respond_to do |format|
+      format.xml { 
+        render :xml => @buckets.to_xml()
+      }
+    end
+  end
+
 end

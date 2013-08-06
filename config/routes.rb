@@ -1,9 +1,11 @@
 QuestionAnswer::Application.routes.draw do
+  root to: 'buckets#index'
   get "question/index"
   get "question/viewadd"
   get "question/viewunmatched"
   get "question/viewnotmachable"
   get "buckets/search"
+  get "buckets/testxml"
   post "question/addlist"
   post "question/changestatus"
   post "question/changenotmatch"
