@@ -1,0 +1,14 @@
+<div align="center" style="font-size:18px;">
+	 <%= link_to 'Un-Matched', '/question/viewunmatched' %> | <%= link_to 'Not-Machable', '/question/viewnotmachable' %> | <%= link_to 'Add Questions', '/question/viewadd' %>
+</div>
+<h2>Not-Matchable Questions</h2>
+
+<%= form_tag("/question/changenotmatch", method: "post") do %>
+    <%= submit_tag("Move to UN-MATCHED") %>
+    <br /><br />
+    <% @notMatchableList.each do |question| %>
+        <%= check_box_tag 'question[]', question.id %> <%= question.qtext %><br />
+    <% end %>
+    <br />
+    <%= submit_tag("Move to UN-MATCHED") %>
+<% end %>

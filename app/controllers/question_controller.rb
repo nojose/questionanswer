@@ -1,9 +1,10 @@
 class QuestionController < ApplicationController
+
   def index
   	unMatched = Qstatus.find_by_qtype("un-matched")
   	notMatchable = Qstatus.find_by_qtype("not-matchable")
-  	@unMatchedList = Question.where(qstatus_id: unMatched.id) #all
-  	@notMatchableList = Question.where(qstatus_id: notMatchable.id) #all
+  	@unMatchedList = Question.where(qstatus_id: unMatched.id)
+  	@notMatchableList = Question.where(qstatus_id: notMatchable.id)
   	@buckets = Bucket.find(:all)
   	@questions = Question.find(:all)
   end
@@ -50,7 +51,8 @@ class QuestionController < ApplicationController
   	 if request.post?
   	 	unMatched = Qstatus.find_by_qtype("un-matched")
   	 	questionsIds = params[:question]
-  	 	if !questionsIds.empty?
+  	 	#render :text => questionsIds
+  	 	if !questionsIds.blank?
   	 		questionsIds.each do |q|
   	 		    uQuestion = Question.find_by_id(q.to_i)
   	 		    uQuestion.update_attributes(:bucket_id => nil, :qstatus_id => unMatched.id)
@@ -58,6 +60,21 @@ class QuestionController < ApplicationController
   	 	end
   	 end
      redirect_to :action => "index"
+  end
+
+  def viewadd
+  end
+
+  def viewunmatched
+  	unMatched = Qstatus.find_by_qtype("un-matched")
+  	@unMatchedList = Question.where(qstatus_id: unMatched.id)
+  	@buckets = Bucket.find(:all)
+  end
+
+  def viewnotmachable
+  	notMatchable = Qstatus.find_by_qtype("not-matchable")
+  	@notMatchableList = Question.where(qstatus_id: notMatchable.id)
+  	@buckets = Bucket.find(:all)
   end
 
 end

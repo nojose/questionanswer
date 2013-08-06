@@ -1,0 +1,10 @@
+<div align="center" style="font-size:18px;">
+	 <%= link_to 'Un-Matched', '/question/viewunmatched' %> | <%= link_to 'Not-Machable', '/question/viewnotmachable' %> | <%= link_to 'Add Questions', '/question/viewadd' %>
+</div>
+<h2>Add Questions</h2>
+
+<%= form_tag("/question/addlist", method: "post") do %>
+  <%= label_tag(:q, "Paste questions here:") %>
+  <%= text_area_tag(:message, "", size: "24x6", class: "textarea-questions") %><br />
+  <%= submit_tag("Save") %>
+<% end %>

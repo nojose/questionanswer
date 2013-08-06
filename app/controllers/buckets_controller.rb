@@ -80,4 +80,11 @@ class BucketsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    #render :text =>
+    searchString = params[:post][:search] #not-safe?
+    @buckets = Bucket.where("phrase like ?", "%"+searchString+"""%")
+    render "index"
+  end
 end

@@ -1,0 +1,15 @@
+<div align="center" style="font-size:18px;">
+	 <%= link_to 'Un-Matched', '/question/viewunmatched' %> | <%= link_to 'Not-Machable', '/question/viewnotmachable' %> | <%= link_to 'Add Questions', '/question/viewadd' %>
+</div>
+<h2>Un-Matched Questions</h2>
+
+<%= form_tag("/question/changestatus", method: "post") do %>
+    <% #collection_select(:bucket, :bucket_id, @buckets, :id, :phrase, {:prompt => true}) %>
+    <%= select(:bucket, :bucket_id, @buckets.collect {|p| [ "Bucket "+p.id.to_s+ ": " + p.phrase, p.id ] } + [ [ 'Move to NOT-MATCHABLE', '-1' ] ], {:include_blank => 'Please select a Bucket'}) %>
+    <br />
+    <% @unMatchedList.each do |question| %>
+        <%= check_box_tag 'question[]', question.id %> <%= question.qtext %><br />
+    <% end %>
+    <br />
+    <%= submit_tag("Save") %>
+<% end %>

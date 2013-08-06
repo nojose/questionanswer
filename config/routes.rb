@@ -1,5 +1,9 @@
 QuestionAnswer::Application.routes.draw do
   get "question/index"
+  get "question/viewadd"
+  get "question/viewunmatched"
+  get "question/viewnotmachable"
+  get "buckets/search"
   post "question/addlist"
   post "question/changestatus"
   post "question/changenotmatch"

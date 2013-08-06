@@ -1,23 +1,28 @@
-<h1>Listing buckets</h1>
+<div align="center" style="font-size:18px;">
+   <%= link_to 'Add Bucket', new_bucket_path %>
+</div>
+<h2>Listing buckets</h2>
 
-<table>
-  <tr>
-    <th>Phrase</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div align="right">
+<%= form_tag("/buckets/search", method: "get") do %>
+  <%= text_field(:post, :search, size: 20) %><%= submit_tag("Search") %><br />
+<% end %>
+</div>
 
 <% @buckets.each do |bucket| %>
-  <tr>
-    <td><%= bucket.phrase %></td>
-    <td><%= link_to 'Show', bucket %></td>
-    <td><%= link_to 'Edit', edit_bucket_path(bucket) %></td>
-    <td><%= link_to 'Destroy', bucket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <div style="background-color:#cecece;">
+      <div style="float:left">
+        <h5 style="margin:2px;">Bucket <%= bucket.id %></h5>
+      </div>
+      <div style="float:right">
+        <%= link_to 'Edit', edit_bucket_path(bucket) %> | <%= link_to 'Destroy', bucket, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <div style="clear:both"></div>
+          <h3 style="margin:2px;"><%= bucket.phrase %><h3>
+    </div>
+    <ul>
+    <% bucket.question.each do |q| %>
+        <li><%= q.qtext %></li>
+    <% end %>
+    </ul>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Bucket', new_bucket_path %>
