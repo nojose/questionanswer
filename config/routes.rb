@@ -1,4 +1,9 @@
 QuestionAnswer::Application.routes.draw do
+  get "question/index"
+  post "question/addlist"
+  post "question/changestatus"
+  post "question/changenotmatch"
+
   resources :qstatuses
 
 
