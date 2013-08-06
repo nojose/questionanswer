@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806144212) do
+ActiveRecord::Schema.define(:version => 20130806150221) do
 
   create_table "buckets", :force => true do |t|
     t.string   "phrase"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130806144212) do
   end
 
   create_table "qstatuses", :force => true do |t|
-    t.string   "type"
+    t.string   "qtype"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

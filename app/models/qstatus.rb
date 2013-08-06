@@ -1,3 +1,3 @@
 class Qstatus < ActiveRecord::Base
-  attr_accessible :type
+  attr_accessible :qtype
 end

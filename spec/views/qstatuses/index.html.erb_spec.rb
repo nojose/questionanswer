@@ -4,10 +4,10 @@ describe "qstatuses/index" do
   before(:each) do
     assign(:qstatuses, [
       stub_model(Qstatus,
-        :type => "Type"
+        :qtype => "Qtype"
       ),
       stub_model(Qstatus,
-        :type => "Type"
+        :qtype => "Qtype"
       )
     ])
   end
@@ -15,6 +15,6 @@ describe "qstatuses/index" do
   it "renders a list of qstatuses" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Type".to_s, :count => 2
+    assert_select "tr>td", :text => "Qtype".to_s, :count => 2
   end
 end
